@@ -22,4 +22,7 @@ public class FighterDTO {
     private double price;
 
     private int points;
+
+
+
 }

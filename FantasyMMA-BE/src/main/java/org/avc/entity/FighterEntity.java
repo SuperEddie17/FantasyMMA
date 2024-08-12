@@ -1,12 +1,11 @@
 package org.avc.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity(name = "fighters")
 @Getter
@@ -26,4 +25,7 @@ public class FighterEntity {
     private double price;
 
     private int points;
+
+    @OneToMany(mappedBy = "fighter")
+    private List<FighterStatsEntity> fighterStats;
 }

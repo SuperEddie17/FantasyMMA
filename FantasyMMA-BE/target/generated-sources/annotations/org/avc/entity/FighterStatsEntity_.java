@@ -19,7 +19,7 @@ public abstract class FighterStatsEntity_ {
 	public static volatile SingularAttribute<FighterStatsEntity, Long> id;
 	public static volatile SingularAttribute<FighterStatsEntity, EventEntity> event;
 	public static volatile SingularAttribute<FighterStatsEntity, Boolean> tkoWin;
-	public static volatile SingularAttribute<FighterStatsEntity, Long> points;
+	public static volatile SingularAttribute<FighterStatsEntity, Integer> points;
 
 	public static final String ATTENDED_SUBMISSIONS = "attendedSubmissions";
 	public static final String UNDERDOG = "underdog";

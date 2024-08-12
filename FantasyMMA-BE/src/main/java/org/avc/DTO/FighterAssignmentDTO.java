@@ -1,11 +1,9 @@
 package org.avc.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import org.avc.entity.FighterEntity;
-import org.avc.entity.TeamEntity;
 
-public class FigterAssignmentDTO {
+
+public class FighterAssignmentDTO {
 
     @JsonProperty("_id")
     private Long id;

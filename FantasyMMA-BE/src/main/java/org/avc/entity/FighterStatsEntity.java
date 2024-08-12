@@ -15,11 +15,9 @@ public class FighterStatsEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "fighter_id", nullable = false)
     private FighterEntity fighter;
 
     @ManyToOne
-    @JoinColumn(name = "event_id", nullable = false)
     private EventEntity event;
 
     private int strikes;
@@ -38,6 +36,9 @@ public class FighterStatsEntity {
 
     private boolean underdog;
 
-    private Long points;
+    private int points;
+
+
+
 
 }

@@ -8,8 +8,10 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface FighterMapper {
+
     FighterDTO toDTO(FighterEntity source);
 
+    @Mapping(target = "points", ignore = true)
     FighterEntity toEntity(FighterDTO source);
 
     @Mapping(target = "id", ignore = true)

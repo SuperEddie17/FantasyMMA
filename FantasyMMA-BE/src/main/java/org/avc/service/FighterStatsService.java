@@ -11,4 +11,8 @@ public interface FighterStatsService {
     void deleteFighterStats(Long id);
 
     FighterStatsDTO findFighterStatsById(Long id);
+
+    FighterStatsDTO recalculatePoints(Long id);
+
+
 }

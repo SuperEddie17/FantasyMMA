@@ -1,7 +1,11 @@
 package org.avc.DTO.mapper;
 
 import javax.annotation.processing.Generated;
+import org.avc.DTO.EventDTO;
+import org.avc.DTO.FighterDTO;
 import org.avc.DTO.FighterStatsDTO;
+import org.avc.entity.EventEntity;
+import org.avc.entity.FighterEntity;
 import org.avc.entity.FighterStatsEntity;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +25,8 @@ public class FighterStatsMapperImpl implements FighterStatsMapper {
         FighterStatsDTO fighterStatsDTO = new FighterStatsDTO();
 
         fighterStatsDTO.setId( source.getId() );
+        fighterStatsDTO.setFighter( fighterEntityToFighterDTO( source.getFighter() ) );
+        fighterStatsDTO.setEvent( eventEntityToEventDTO( source.getEvent() ) );
         fighterStatsDTO.setStrikes( source.getStrikes() );
         fighterStatsDTO.setSignificantStrikes( source.getSignificantStrikes() );
         fighterStatsDTO.setTakedowns( source.getTakedowns() );
@@ -29,9 +35,7 @@ public class FighterStatsMapperImpl implements FighterStatsMapper {
         fighterStatsDTO.setTkoWin( source.isTkoWin() );
         fighterStatsDTO.setDecWin( source.isDecWin() );
         fighterStatsDTO.setUnderdog( source.isUnderdog() );
-        if ( source.getPoints() != null ) {
-            fighterStatsDTO.setPoints( source.getPoints() );
-        }
+        fighterStatsDTO.setPoints( source.getPoints() );
 
         return fighterStatsDTO;
     }
@@ -45,6 +49,8 @@ public class FighterStatsMapperImpl implements FighterStatsMapper {
         FighterStatsEntity fighterStatsEntity = new FighterStatsEntity();
 
         fighterStatsEntity.setId( source.getId() );
+        fighterStatsEntity.setFighter( fighterDTOToFighterEntity( source.getFighter() ) );
+        fighterStatsEntity.setEvent( eventDTOToEventEntity( source.getEvent() ) );
         fighterStatsEntity.setStrikes( source.getStrikes() );
         fighterStatsEntity.setSignificantStrikes( source.getSignificantStrikes() );
         fighterStatsEntity.setTakedowns( source.getTakedowns() );
@@ -64,7 +70,6 @@ public class FighterStatsMapperImpl implements FighterStatsMapper {
             return;
         }
 
-        target.setId( source.getId() );
         target.setStrikes( source.getStrikes() );
         target.setSignificantStrikes( source.getSignificantStrikes() );
         target.setTakedowns( source.getTakedowns() );
@@ -74,5 +79,67 @@ public class FighterStatsMapperImpl implements FighterStatsMapper {
         target.setDecWin( source.isDecWin() );
         target.setUnderdog( source.isUnderdog() );
         target.setPoints( source.getPoints() );
+    }
+
+    protected FighterDTO fighterEntityToFighterDTO(FighterEntity fighterEntity) {
+        if ( fighterEntity == null ) {
+            return null;
+        }
+
+        FighterDTO fighterDTO = new FighterDTO();
+
+        fighterDTO.setId( fighterEntity.getId() );
+        fighterDTO.setName( fighterEntity.getName() );
+        fighterDTO.setSurname( fighterEntity.getSurname() );
+        fighterDTO.setWeightClass( fighterEntity.getWeightClass() );
+        fighterDTO.setPrice( fighterEntity.getPrice() );
+        fighterDTO.setPoints( fighterEntity.getPoints() );
+
+        return fighterDTO;
+    }
+
+    protected EventDTO eventEntityToEventDTO(EventEntity eventEntity) {
+        if ( eventEntity == null ) {
+            return null;
+        }
+
+        EventDTO eventDTO = new EventDTO();
+
+        eventDTO.setId( eventEntity.getId() );
+        eventDTO.setName( eventEntity.getName() );
+        eventDTO.setDate( eventEntity.getDate() );
+
+        return eventDTO;
+    }
+
+    protected FighterEntity fighterDTOToFighterEntity(FighterDTO fighterDTO) {
+        if ( fighterDTO == null ) {
+            return null;
+        }
+
+        FighterEntity fighterEntity = new FighterEntity();
+
+        fighterEntity.setId( fighterDTO.getId() );
+        fighterEntity.setName( fighterDTO.getName() );
+        fighterEntity.setSurname( fighterDTO.getSurname() );
+        fighterEntity.setWeightClass( fighterDTO.getWeightClass() );
+        fighterEntity.setPrice( fighterDTO.getPrice() );
+        fighterEntity.setPoints( fighterDTO.getPoints() );
+
+        return fighterEntity;
+    }
+
+    protected EventEntity eventDTOToEventEntity(EventDTO eventDTO) {
+        if ( eventDTO == null ) {
+            return null;
+        }
+
+        EventEntity eventEntity = new EventEntity();
+
+        eventEntity.setId( eventDTO.getId() );
+        eventEntity.setName( eventDTO.getName() );
+        eventEntity.setDate( eventDTO.getDate() );
+
+        return eventEntity;
     }
 }

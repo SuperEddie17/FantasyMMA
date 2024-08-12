@@ -1,12 +1,11 @@
 package org.avc.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity(name = "users")
 @Getter
@@ -22,5 +21,8 @@ public class UserEntity {
     private String email;
 
     private double budget;
+
+    @OneToMany(mappedBy = "user")
+    private List<TeamEntity> teams;
 
 }

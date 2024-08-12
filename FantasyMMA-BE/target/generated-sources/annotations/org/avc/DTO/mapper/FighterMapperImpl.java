@@ -43,7 +43,6 @@ public class FighterMapperImpl implements FighterMapper {
         fighterEntity.setSurname( source.getSurname() );
         fighterEntity.setWeightClass( source.getWeightClass() );
         fighterEntity.setPrice( source.getPrice() );
-        fighterEntity.setPoints( source.getPoints() );
 
         return fighterEntity;
     }

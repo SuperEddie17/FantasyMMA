@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.avc.entity.EventEntity;
+import org.avc.entity.FighterEntity;
 
 @Data
 @AllArgsConstructor
@@ -16,9 +18,9 @@ public class FighterStatsDTO {
     @JsonProperty("_id")
     private Long id;
 
-    private Long fighterId;
+    private FighterDTO fighter;
 
-    private Long eventId;
+    private EventDTO event;
 
     private int strikes;
 
@@ -36,7 +38,7 @@ public class FighterStatsDTO {
 
     private boolean underdog;
 
-    private long points;
+    private int points;
 
 
 
